@@ -20,7 +20,7 @@
 }
 
 .footer {
-    position: sticky;
+    position: absolute;
 	display: flex;
     align-items: center;
     justify-content: center;
