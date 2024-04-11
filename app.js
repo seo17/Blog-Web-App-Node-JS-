@@ -52,15 +52,15 @@ app.get('/compose', (req, res) => {
   res.render('compose', {contactContent: contactContent});
 });
 
-app.post('/compose', (req, res) => {
+app.post('/compose', async (req, res) => {
   const postedData = req.body;
 
-  const post = {
+  const post = new Post({
     title: postedData.postTitle,
     content: postedData.postContent
-  }
+  });
 
-  posts.push(post);
+  await post.save();
 
   res.redirect('/');
 });
