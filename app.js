@@ -66,10 +66,12 @@ app.post('/compose', async (req, res) => {
 });
 
 
-app.get('/posts/:postName', (req, res) => {
+app.get('/posts/:postName', async (req, res) => {
   let requestedTitle = _.lowerCase(req.params.postName);
 
-  posts.forEach((post) => {
+  const allPosts = await Post.find({});
+
+  allPosts.forEach((post) => {
     let storedTitle = _.lowerCase(post.title);
     
     if(requestedTitle === storedTitle){
